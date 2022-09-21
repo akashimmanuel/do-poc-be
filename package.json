@@ -2,10 +2,9 @@
   "name": "do-poc-be",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start:dev": "nodemon",
-    "build": "rimraf ./build && tsc",
+    "build": "esbuild ./src/index.ts --platform=node --bundle --outfile=built/index.js",
     "start": "node build/index.js"
   },
   "repository": {
