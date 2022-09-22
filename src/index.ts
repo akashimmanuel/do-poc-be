@@ -1,5 +1,6 @@
 import express, { Application, Request, Response } from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 
 const todos = require("./routes/todo.routes");
 
@@ -7,6 +8,8 @@ dotenv.config();
 
 const app: Application = express();
 const port = 3000;
+
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

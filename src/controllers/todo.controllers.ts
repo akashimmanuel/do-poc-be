@@ -23,4 +23,22 @@ const add = async (req: Request, res: Response) => {
   }
 };
 
-module.exports = { add };
+const getTodos = async (req: Request, res: Response) => {
+  try {
+    const todo = await prisma.todos.findMany();
+    res.send(todo);
+  } catch (error) {
+    res.send(error);
+  }
+};
+
+const deleteTodos = async (req: Request, res: Response) => {
+  try {
+    const todo = await prisma.todos.delete({ where: { id: req.body.id } });
+    res.send(todo);
+  } catch (error) {
+    res.send(error);
+  }
+};
+
+module.exports = { add, getTodos, deleteTodos };
